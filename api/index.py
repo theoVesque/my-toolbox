@@ -1,7 +1,6 @@
 from fastapi import FastAPI
+from .controller.test import TestController
 
 app = FastAPI()
 
-@app.get("/api/python")
-def hello_world():
-    return {"message": "Hello World"}
+app.include_router(TestController.testRouter)

@@ -1,5 +1,13 @@
 [
     {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
         "label": "FastAPI",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -8,12 +16,12 @@
         "documentation": {}
     },
     {
-        "label": "hello_world",
-        "kind": 2,
-        "importPath": "api.index",
-        "description": "api.index",
-        "peekOfCode": "def hello_world():\n    return {\"message\": \"Hello World\"}",
-        "detail": "api.index",
+        "label": "TestController",
+        "kind": 6,
+        "importPath": "api.controller.test",
+        "description": "api.controller.test",
+        "peekOfCode": "class TestController:\n    testRouter  = APIRouter()\n    @testRouter.get(\"/api/python\")\n    def hello_world():\n        return {\"message\": \"Hello World\"}",
+        "detail": "api.controller.test",
         "documentation": {}
     },
     {
@@ -21,7 +29,7 @@
         "kind": 5,
         "importPath": "api.index",
         "description": "api.index",
-        "peekOfCode": "app = FastAPI()\n@app.get(\"/api/python\")\ndef hello_world():\n    return {\"message\": \"Hello World\"}",
+        "peekOfCode": "app = FastAPI()\napp.include_router(TestController.testRouter)",
         "detail": "api.index",
         "documentation": {}
     }
