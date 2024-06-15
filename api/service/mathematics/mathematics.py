@@ -1,4 +1,5 @@
 import math
+import random 
 
 class MathematicsTools:
     
@@ -59,8 +60,19 @@ class MathematicsTools:
     def exponential(x):
         return math.exp(x)
 
+    @staticmethod
+    def calc_quiz_level1():
+        operator_list = ['+', '-']
+        random_operator(operator_list[random.randint(0,len(operator_list)-1)])
+
+        return random_operator
+
+
+
+
 values = [50, 25, 75, 100, 125]
 
+'''
 print("Moyenne:", MathematicsTools.average(values))
 print("Médiane:", MathematicsTools.median(values))
 print("Variance:", MathematicsTools.variance(values))
@@ -70,3 +82,6 @@ print("Minimum:", MathematicsTools.minimum(values))
 print("Puissance:", MathematicsTools.power(2, 3))
 print("Factoriel:", MathematicsTools.factorial(5))
 print("Exponentielle:", MathematicsTools.exponential(2))
+'''
+
+print(MathematicsTools.calc_quiz_level1())
