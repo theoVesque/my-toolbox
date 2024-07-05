@@ -1,43 +1,64 @@
+import math
+import random 
+
 class LengthConverter:
     conversion_factors = {
-            'm': 1,           # base unit 
-            'km': 1000,       # 1km = 1000 m
-            'cm': 0.01,       # 1cm = 0.01 m
-            'mm': 0.001,      # 1 mm = 0.001 m
-            'mile': 1609.34,  # 1 mile = 1609.34 m
-            'yard': 0.9144,   # 1 yard = 0.9144 m
-            'foot': 0.3048,   # 1 foot = 0.3048 m
-            'inch': 0.0254    # 1 inch = 0.0254 m
+        'm': 1,           # base unit 
+        'km': 1000,       # 1 km = 1000 m
+        'cm': 0.01,       # 1 cm = 0.01 m
+        'mm': 0.001,      # 1 mm = 0.001 m
+        'mile': 1609.34,  # 1 mile = 1609.34 m
+        'yard': 0.9144,   # 1 yard = 0.9144 m
+        'foot': 0.3048,   # 1 foot = 0.3048 m
+        'inch': 0.0254    # 1 inch = 0.0254 m
     }
     
     @staticmethod
     def convert(value, from_unit, to_unit):
+        """
+        Convert a length from one unit to another.
+
+        :param value: The length value to convert.
+        :param from_unit: The unit to convert from.
+        :param to_unit: The unit to convert to.
+        :return: The converted length value.
+        :raises ValueError: If the from_unit or to_unit is not recognized.
+        """
         if from_unit not in LengthConverter.conversion_factors:
-            raise ValueError(f"Unkwown from unit : {from_unit}")
+            raise ValueError(f"Unknown from unit: {from_unit}")
         if to_unit not in LengthConverter.conversion_factors:
-            raise ValueError(f"Unkwown destination unit : {to_unit}")
+            raise ValueError(f"Unknown destination unit: {to_unit}")
     
-        # convert in meter 
+        # Convert to meters
         value_in_meters = value * LengthConverter.conversion_factors[from_unit]
         
-        # Convert in destination unit
+        # Convert to destination unit
         converted_value = value_in_meters / LengthConverter.conversion_factors[to_unit]
         return converted_value
 
     
 class TimeConverter:
     conversion_factors_time = {
-    'second': 1,          # second is the reference unit
-    'minute': 60,         # 1 minute = 60 seconds
-    'hour': 3600,         # 1 hour = 3600 seconds
-    'day': 86400,         # 1 day = 86400 seconds
-    'week': 604800,       # 1 week = 604800 seconds
-    'month': 2628000,     # approximation: 1 month = 2628000 seconds (30.42 days)
-    'year': 31536000      # approximation: 1 year = 31536000 seconds (365 days)
+        'second': 1,          # second is the reference unit
+        'minute': 60,         # 1 minute = 60 seconds
+        'hour': 3600,         # 1 hour = 3600 seconds
+        'day': 86400,         # 1 day = 86400 seconds
+        'week': 604800,       # 1 week = 604800 seconds
+        'month': 2628000,     # approximation: 1 month = 2628000 seconds (30.42 days)
+        'year': 31536000      # approximation: 1 year = 31536000 seconds (365 days)
     }
     
     @staticmethod
     def convert(value, from_unit, to_unit):
+        """
+        Convert a time duration from one unit to another.
+
+        :param value: The time value to convert.
+        :param from_unit: The unit to convert from.
+        :param to_unit: The unit to convert to.
+        :return: The converted time value.
+        :raises ValueError: If the from_unit or to_unit is not recognized.
+        """
         if from_unit not in TimeConverter.conversion_factors_time:
             raise ValueError(f"Unknown from unit: {from_unit}")
         if to_unit not in TimeConverter.conversion_factors_time:
@@ -62,12 +83,21 @@ class MassConverter:
     
     @staticmethod
     def convert(value, from_unit, to_unit):
+        """
+        Convert a mass from one unit to another.
+
+        :param value: The mass value to convert.
+        :param from_unit: The unit to convert from.
+        :param to_unit: The unit to convert to.
+        :return: The converted mass value.
+        :raises ValueError: If the from_unit or to_unit is not recognized.
+        """
         if from_unit not in MassConverter.conversion_factors_mass:
             raise ValueError(f"Unknown from unit: {from_unit}")
         if to_unit not in MassConverter.conversion_factors_mass:
             raise ValueError(f"Unknown destination unit: {to_unit}")
         
-        # Convert to gram
+        # Convert to grams
         value_in_grams = value * MassConverter.conversion_factors_mass[from_unit]
 
         # Convert to destination unit
@@ -85,17 +115,25 @@ class SpeedConverter:
     
     @staticmethod
     def convert(value, from_unit, to_unit):
+        """
+        Convert a speed from one unit to another.
+
+        :param value: The speed value to convert.
+        :param from_unit: The unit to convert from.
+        :param to_unit: The unit to convert to.
+        :return: The converted speed value.
+        :raises ValueError: If the from_unit or to_unit is not recognized.
+        """
         if from_unit not in SpeedConverter.conversion_factors_speed:
             raise ValueError(f"Unknown from unit: {from_unit}")
         if to_unit not in SpeedConverter.conversion_factors_speed:
             raise ValueError(f"Unknown destination unit: {to_unit}")
         
-        # Convert to m/s
+        # Convert to meters per second
         value_in_meters_per_second = value * SpeedConverter.conversion_factors_speed[from_unit]
 
         # Convert to destination unit
         converted_value = value_in_meters_per_second / SpeedConverter.conversion_factors_speed[to_unit]
         return converted_value
 
-        
-print(TimeConverter.convert(10, 'second', 'day'))
+

@@ -1,5 +1,21 @@
 [
     {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
         "label": "APIRouter",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -16,12 +32,64 @@
         "documentation": {}
     },
     {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
         "label": "math",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "math",
         "description": "math",
         "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "CORSMiddleware",
+        "importPath": "fastapi.middleware.cors",
+        "description": "fastapi.middleware.cors",
+        "isExtraImport": true,
+        "detail": "fastapi.middleware.cors",
+        "documentation": {}
+    },
+    {
+        "label": "LengthConversionRequest",
+        "kind": 6,
+        "importPath": "api.controller.unitConverter.converterController",
+        "description": "api.controller.unitConverter.converterController",
+        "peekOfCode": "class LengthConversionRequest(BaseModel):\n    value: float\n    from_unit: str\n    to_unit: str\nclass ConverterController:\n    converter_router = APIRouter(prefix=\"/api/converter\")\n    @converter_router.post(\"/length\")\n    async def convert_length(request: LengthConversionRequest):\n        \"\"\"\n        Convert length from one unit to another.",
+        "detail": "api.controller.unitConverter.converterController",
+        "documentation": {}
+    },
+    {
+        "label": "ConverterController",
+        "kind": 6,
+        "importPath": "api.controller.unitConverter.converterController",
+        "description": "api.controller.unitConverter.converterController",
+        "peekOfCode": "class ConverterController:\n    converter_router = APIRouter(prefix=\"/api/converter\")\n    @converter_router.post(\"/length\")\n    async def convert_length(request: LengthConversionRequest):\n        \"\"\"\n        Convert length from one unit to another.\n        :param request: LengthConversionRequest containing value, from_unit, and to_unit.\n        :return: Converted value.\n        \"\"\"\n        converted_value = LengthConverter.convert(",
+        "detail": "api.controller.unitConverter.converterController",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "api.controller.unitConverter.converterController",
+        "description": "api.controller.unitConverter.converterController",
+        "peekOfCode": "app = FastAPI()\nclass LengthConversionRequest(BaseModel):\n    value: float\n    from_unit: str\n    to_unit: str\nclass ConverterController:\n    converter_router = APIRouter(prefix=\"/api/converter\")\n    @converter_router.post(\"/length\")\n    async def convert_length(request: LengthConversionRequest):\n        \"\"\"",
+        "detail": "api.controller.unitConverter.converterController",
         "documentation": {}
     },
     {
@@ -38,16 +106,7 @@
         "kind": 6,
         "importPath": "api.service.mathematics.mathematics",
         "description": "api.service.mathematics.mathematics",
-        "peekOfCode": "class MathematicsTools:\n    @staticmethod\n    def calc_percent(value, percent):\n        return (value * percent) / 100\n    @staticmethod\n    def calc_sum(value):\n        s = 0\n        for i in value:\n            s += i\n        return s",
-        "detail": "api.service.mathematics.mathematics",
-        "documentation": {}
-    },
-    {
-        "label": "values",
-        "kind": 5,
-        "importPath": "api.service.mathematics.mathematics",
-        "description": "api.service.mathematics.mathematics",
-        "peekOfCode": "values = [50, 25, 75, 100, 125]\nprint(\"Moyenne:\", MathematicsTools.average(values))\nprint(\"Médiane:\", MathematicsTools.median(values))\nprint(\"Variance:\", MathematicsTools.variance(values))\nprint(\"Écart type:\", MathematicsTools.standard_deviation(values))\nprint(\"Maximum:\", MathematicsTools.maximum(values))\nprint(\"Minimum:\", MathematicsTools.minimum(values))\nprint(\"Puissance:\", MathematicsTools.power(2, 3))\nprint(\"Factoriel:\", MathematicsTools.factorial(5))\nprint(\"Exponentielle:\", MathematicsTools.exponential(2))",
+        "peekOfCode": "class MathematicsTools:\n    @staticmethod\n    def calc_percent(value, percent):\n        \"\"\"\n        Calculate the percentage of a given value.\n        :param value: The base value.\n        :param percent: The percentage to calculate.\n        :return: The calculated percentage of the value.\n        \"\"\"\n        return (value * percent) / 100",
         "detail": "api.service.mathematics.mathematics",
         "documentation": {}
     },
@@ -56,7 +115,7 @@
         "kind": 6,
         "importPath": "api.service.unitConverter.converter",
         "description": "api.service.unitConverter.converter",
-        "peekOfCode": "class LengthConverter:\n    conversion_factors = {\n            'm': 1,           # base unit \n            'km': 1000,       # 1km = 1000 m\n            'cm': 0.01,       # 1cm = 0.01 m\n            'mm': 0.001,      # 1 mm = 0.001 m\n            'mile': 1609.34,  # 1 mile = 1609.34 m\n            'yard': 0.9144,   # 1 yard = 0.9144 m\n            'foot': 0.3048,   # 1 foot = 0.3048 m\n            'inch': 0.0254    # 1 inch = 0.0254 m",
+        "peekOfCode": "class LengthConverter:\n    conversion_factors = {\n        'm': 1,           # base unit \n        'km': 1000,       # 1 km = 1000 m\n        'cm': 0.01,       # 1 cm = 0.01 m\n        'mm': 0.001,      # 1 mm = 0.001 m\n        'mile': 1609.34,  # 1 mile = 1609.34 m\n        'yard': 0.9144,   # 1 yard = 0.9144 m\n        'foot': 0.3048,   # 1 foot = 0.3048 m\n        'inch': 0.0254    # 1 inch = 0.0254 m",
         "detail": "api.service.unitConverter.converter",
         "documentation": {}
     },
@@ -65,7 +124,7 @@
         "kind": 6,
         "importPath": "api.service.unitConverter.converter",
         "description": "api.service.unitConverter.converter",
-        "peekOfCode": "class TimeConverter:\n    conversion_factors_time = {\n    'second': 1,          # second is the reference unit\n    'minute': 60,         # 1 minute = 60 seconds\n    'hour': 3600,         # 1 hour = 3600 seconds\n    'day': 86400,         # 1 day = 86400 seconds\n    'week': 604800,       # 1 week = 604800 seconds\n    'month': 2628000,     # approximation: 1 month = 2628000 seconds (30.42 days)\n    'year': 31536000      # approximation: 1 year = 31536000 seconds (365 days)\n    }",
+        "peekOfCode": "class TimeConverter:\n    conversion_factors_time = {\n        'second': 1,          # second is the reference unit\n        'minute': 60,         # 1 minute = 60 seconds\n        'hour': 3600,         # 1 hour = 3600 seconds\n        'day': 86400,         # 1 day = 86400 seconds\n        'week': 604800,       # 1 week = 604800 seconds\n        'month': 2628000,     # approximation: 1 month = 2628000 seconds (30.42 days)\n        'year': 31536000      # approximation: 1 year = 31536000 seconds (365 days)\n    }",
         "detail": "api.service.unitConverter.converter",
         "documentation": {}
     },
@@ -83,7 +142,7 @@
         "kind": 6,
         "importPath": "api.service.unitConverter.converter",
         "description": "api.service.unitConverter.converter",
-        "peekOfCode": "class SpeedConverter:\n    conversion_factors_speed = {\n        'm/s': 1,          # meter per second is the reference unit\n        'km/h': 0.277778,  # 1 kilometer per hour = 0.277778 meters per second\n        'mph': 0.44704,    # 1 mile per hour = 0.44704 meters per second\n        'knot': 0.514444   # 1 knot = 0.514444 meters per second\n    }\n    @staticmethod\n    def convert(value, from_unit, to_unit):\n        if from_unit not in SpeedConverter.conversion_factors_speed:",
+        "peekOfCode": "class SpeedConverter:\n    conversion_factors_speed = {\n        'm/s': 1,          # meter per second is the reference unit\n        'km/h': 0.277778,  # 1 kilometer per hour = 0.277778 meters per second\n        'mph': 0.44704,    # 1 mile per hour = 0.44704 meters per second\n        'knot': 0.514444   # 1 knot = 0.514444 meters per second\n    }\n    @staticmethod\n    def convert(value, from_unit, to_unit):\n        \"\"\"",
         "detail": "api.service.unitConverter.converter",
         "documentation": {}
     },
@@ -92,7 +151,16 @@
         "kind": 5,
         "importPath": "api.index",
         "description": "api.index",
-        "peekOfCode": "app = FastAPI()\napp.include_router(TestController.testRouter)",
+        "peekOfCode": "app = FastAPI()\n# Configuration des origines autorisées\norigins = [\n    \"http://localhost:3000\",\n    \"http://127.0.0.1:3000\",\n]\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=origins,  # Autoriser ces origines\n    allow_credentials=True,",
+        "detail": "api.index",
+        "documentation": {}
+    },
+    {
+        "label": "origins",
+        "kind": 5,
+        "importPath": "api.index",
+        "description": "api.index",
+        "peekOfCode": "origins = [\n    \"http://localhost:3000\",\n    \"http://127.0.0.1:3000\",\n]\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=origins,  # Autoriser ces origines\n    allow_credentials=True,\n    allow_methods=[\"*\"],  # Autoriser toutes les méthodes (GET, POST, etc.)\n    allow_headers=[\"*\"],  # Autoriser tous les headers",
         "detail": "api.index",
         "documentation": {}
     }
