@@ -151,7 +151,7 @@
         "kind": 5,
         "importPath": "api.index",
         "description": "api.index",
-        "peekOfCode": "app = FastAPI()\n# Configuration des origines autorisées\norigins = [\n    \"http://localhost:3000\",\n    \"http://127.0.0.1:3000\",\n]\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=origins,  # Autoriser ces origines\n    allow_credentials=True,",
+        "peekOfCode": "app = FastAPI()\n# Configuration des origines autorisées\norigins = [\n    \"http://localhost:3000\",\n    \"http://127.0.0.1:3000\",\n    \"https://my-toolbox.vercel.app\",\n    \"http://my-toolbox.vercel.app\",\n    \"*\"\n]\napp.add_middleware(",
         "detail": "api.index",
         "documentation": {}
     },
@@ -160,7 +160,7 @@
         "kind": 5,
         "importPath": "api.index",
         "description": "api.index",
-        "peekOfCode": "origins = [\n    \"http://localhost:3000\",\n    \"http://127.0.0.1:3000\",\n]\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=origins,  # Autoriser ces origines\n    allow_credentials=True,\n    allow_methods=[\"*\"],  # Autoriser toutes les méthodes (GET, POST, etc.)\n    allow_headers=[\"*\"],  # Autoriser tous les headers",
+        "peekOfCode": "origins = [\n    \"http://localhost:3000\",\n    \"http://127.0.0.1:3000\",\n    \"https://my-toolbox.vercel.app\",\n    \"http://my-toolbox.vercel.app\",\n    \"*\"\n]\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=origins,  # Autoriser ces origines",
         "detail": "api.index",
         "documentation": {}
     }
