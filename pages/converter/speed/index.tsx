@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import config from "../../../config/config";
+import config from "../../../config";
 
 const SpeedConverterForm = () => {
   const [value, setValue] = useState("");
