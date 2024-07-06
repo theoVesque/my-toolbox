@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import axios from "axios";
 import config from "../../../config/config";
 
-const LengthConverterForm = () => {
+const SpeedConverterForm = () => {
   const [value, setValue] = useState("");
-  const [fromUnit, setFromUnit] = useState("m");
-  const [toUnit, setToUnit] = useState("km");
+  const [fromUnit, setFromUnit] = useState("m/s");
+  const [toUnit, setToUnit] = useState("km/h");
   const [result, setResult] = useState(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `${config.apiUrl}/api/converter/length`,
+        `${config.apiUrl}/api/converter/speed`,
         {
           value: parseFloat(value),
           from_unit: fromUnit,
@@ -42,27 +42,19 @@ const LengthConverterForm = () => {
             value={fromUnit}
             onChange={(e) => setFromUnit(e.target.value)}
           >
-            <option value="m">Meters</option>
-            <option value="km">Kilometers</option>
-            <option value="cm">Centimeters</option>
-            <option value="mm">Millimeters</option>
-            <option value="mile">Miles</option>
-            <option value="yard">Yards</option>
-            <option value="foot">Feet</option>
-            <option value="inch">Inches</option>
+            <option value="m/s">m/s</option>
+            <option value="km/h">km/h</option>
+            <option value="mph">mph</option>
+            <option value="knot">knot</option>
           </select>
         </div>
         <div>
           <label>To Unit:</label>
           <select value={toUnit} onChange={(e) => setToUnit(e.target.value)}>
-            <option value="m">Meters</option>
-            <option value="km">Kilometers</option>
-            <option value="cm">Centimeters</option>
-            <option value="mm">Millimeters</option>
-            <option value="mile">Miles</option>
-            <option value="yard">Yards</option>
-            <option value="foot">Feet</option>
-            <option value="inch">Inches</option>
+            <option value="m/s">m/s</option>
+            <option value="km/h">km/h</option>
+            <option value="mph">mph</option>
+            <option value="knot">knot</option>
           </select>
         </div>
         <button type="submit">Convert</button>
@@ -76,4 +68,4 @@ const LengthConverterForm = () => {
   );
 };
 
-export default LengthConverterForm;
+export default SpeedConverterForm;

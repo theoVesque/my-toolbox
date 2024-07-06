@@ -40,6 +40,14 @@
         "documentation": {}
     },
     {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
         "label": "math",
         "kind": 6,
         "isExtraImport": true,
@@ -66,15 +74,6 @@
         "documentation": {}
     },
     {
-        "label": "LengthConversionRequest",
-        "kind": 6,
-        "importPath": "api.controller.unitConverter.converterController",
-        "description": "api.controller.unitConverter.converterController",
-        "peekOfCode": "class LengthConversionRequest(BaseModel):\n    value: float\n    from_unit: str\n    to_unit: str\nclass ConverterController:\n    converter_router = APIRouter(prefix=\"/api/converter\")\n    @converter_router.post(\"/length\")\n    async def convert_length(request: LengthConversionRequest):\n        \"\"\"\n        Convert length from one unit to another.",
-        "detail": "api.controller.unitConverter.converterController",
-        "documentation": {}
-    },
-    {
         "label": "ConverterController",
         "kind": 6,
         "importPath": "api.controller.unitConverter.converterController",
@@ -88,7 +87,7 @@
         "kind": 5,
         "importPath": "api.controller.unitConverter.converterController",
         "description": "api.controller.unitConverter.converterController",
-        "peekOfCode": "app = FastAPI()\nclass LengthConversionRequest(BaseModel):\n    value: float\n    from_unit: str\n    to_unit: str\nclass ConverterController:\n    converter_router = APIRouter(prefix=\"/api/converter\")\n    @converter_router.post(\"/length\")\n    async def convert_length(request: LengthConversionRequest):\n        \"\"\"",
+        "peekOfCode": "app = FastAPI()\nclass ConverterController:\n    converter_router = APIRouter(prefix=\"/api/converter\")\n    @converter_router.post(\"/length\")\n    async def convert_length(request: LengthConversionRequest):\n        \"\"\"\n        Convert length from one unit to another.\n        :param request: LengthConversionRequest containing value, from_unit, and to_unit.\n        :return: Converted value.\n        \"\"\"",
         "detail": "api.controller.unitConverter.converterController",
         "documentation": {}
     },
@@ -99,6 +98,42 @@
         "description": "api.controller.test",
         "peekOfCode": "class TestController:\n    testRouter  = APIRouter()\n    @testRouter.get(\"/api/python\")\n    def hello_world():\n        return {\"message\": \"Hello World\"}",
         "detail": "api.controller.test",
+        "documentation": {}
+    },
+    {
+        "label": "LengthConversionRequest",
+        "kind": 6,
+        "importPath": "api.model.unitConverter.unitConverterRequest",
+        "description": "api.model.unitConverter.unitConverterRequest",
+        "peekOfCode": "class LengthConversionRequest(BaseModel):\n    value: float\n    from_unit: str\n    to_unit: str \nclass TimeConverterRequest(BaseModel):\n    value: float\n    from_unit: str\n    to_unit: str \nclass MassConverterRequest(BaseModel): \n    value: float",
+        "detail": "api.model.unitConverter.unitConverterRequest",
+        "documentation": {}
+    },
+    {
+        "label": "TimeConverterRequest",
+        "kind": 6,
+        "importPath": "api.model.unitConverter.unitConverterRequest",
+        "description": "api.model.unitConverter.unitConverterRequest",
+        "peekOfCode": "class TimeConverterRequest(BaseModel):\n    value: float\n    from_unit: str\n    to_unit: str \nclass MassConverterRequest(BaseModel): \n    value: float\n    from_unit: str\n    to_unit: str  \nclass SpeedConverterRequest(BaseModel):\n    value: float",
+        "detail": "api.model.unitConverter.unitConverterRequest",
+        "documentation": {}
+    },
+    {
+        "label": "MassConverterRequest",
+        "kind": 6,
+        "importPath": "api.model.unitConverter.unitConverterRequest",
+        "description": "api.model.unitConverter.unitConverterRequest",
+        "peekOfCode": "class MassConverterRequest(BaseModel): \n    value: float\n    from_unit: str\n    to_unit: str  \nclass SpeedConverterRequest(BaseModel):\n    value: float\n    from_unit: str\n    to_unit: str",
+        "detail": "api.model.unitConverter.unitConverterRequest",
+        "documentation": {}
+    },
+    {
+        "label": "SpeedConverterRequest",
+        "kind": 6,
+        "importPath": "api.model.unitConverter.unitConverterRequest",
+        "description": "api.model.unitConverter.unitConverterRequest",
+        "peekOfCode": "class SpeedConverterRequest(BaseModel):\n    value: float\n    from_unit: str\n    to_unit: str",
+        "detail": "api.model.unitConverter.unitConverterRequest",
         "documentation": {}
     },
     {
