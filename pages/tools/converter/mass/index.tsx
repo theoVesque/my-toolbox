@@ -1,24 +1,21 @@
 import React, { useState } from "react";
 import axios from "axios";
-import config from "../../../config";
+import config from "../../../../config";
 
-const LengthConverterForm = () => {
+const MassConverterForm = () => {
   const [value, setValue] = useState("");
-  const [fromUnit, setFromUnit] = useState("m");
-  const [toUnit, setToUnit] = useState("km");
+  const [fromUnit, setFromUnit] = useState("gram");
+  const [toUnit, setToUnit] = useState("kilogram");
   const [result, setResult] = useState(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        `${config.apiUrl}/api/converter/length`,
-        {
-          value: parseFloat(value),
-          from_unit: fromUnit,
-          to_unit: toUnit,
-        }
-      );
+      const response = await axios.post(`${config.apiUrl}/api/converter/mass`, {
+        value: parseFloat(value),
+        from_unit: fromUnit,
+        to_unit: toUnit,
+      });
       setResult(response.data.converted_value);
     } catch (error) {
       console.error("There was an error!", error);
@@ -42,27 +39,27 @@ const LengthConverterForm = () => {
             value={fromUnit}
             onChange={(e) => setFromUnit(e.target.value)}
           >
-            <option value="m">Meters</option>
-            <option value="km">Kilometers</option>
-            <option value="cm">Centimeters</option>
-            <option value="mm">Millimeters</option>
-            <option value="mile">Miles</option>
+            <option value="gram">Gram</option>
+            <option value="kilogram">Kilogram</option>
+            <option value="milligram">Milligram</option>
+            <option value="tonne">Ton</option>
+            <option value="ounce">Ounce</option>
             <option value="yard">Yards</option>
             <option value="foot">Feet</option>
-            <option value="inch">Inches</option>
+            <option value="pound">Pound</option>
           </select>
         </div>
         <div>
           <label>To Unit:</label>
           <select value={toUnit} onChange={(e) => setToUnit(e.target.value)}>
-            <option value="m">Meters</option>
-            <option value="km">Kilometers</option>
-            <option value="cm">Centimeters</option>
-            <option value="mm">Millimeters</option>
-            <option value="mile">Miles</option>
+            <option value="gram">Gram</option>
+            <option value="kilogram">Kilogram</option>
+            <option value="milligram">Milligram</option>
+            <option value="tonne">Ton</option>
+            <option value="ounce">Ounce</option>
             <option value="yard">Yards</option>
             <option value="foot">Feet</option>
-            <option value="inch">Inches</option>
+            <option value="pound">Pound</option>
           </select>
         </div>
         <button type="submit">Convert</button>
@@ -76,4 +73,4 @@ const LengthConverterForm = () => {
   );
 };
 
-export default LengthConverterForm;
+export default MassConverterForm;
