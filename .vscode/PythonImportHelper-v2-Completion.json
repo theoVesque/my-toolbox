@@ -106,6 +106,31 @@
         "documentation": {}
     },
     {
+        "label": "qrcode",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "qrcode",
+        "description": "qrcode",
+        "detail": "qrcode",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "ImageDraw",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
         "label": "CORSMiddleware",
         "importPath": "fastapi.middleware.cors",
         "description": "fastapi.middleware.cors",
@@ -282,6 +307,24 @@
         "description": "api.service.mathematics.mathematics",
         "peekOfCode": "class MathematicsTools:\n    @staticmethod\n    def calc_percent(value, percent):\n        \"\"\"\n        Calculate the percentage of a given value.\n        :param value: The base value.\n        :param percent: The percentage to calculate.\n        :return: The calculated percentage of the value.\n        \"\"\"\n        return (value * percent) / 100",
         "detail": "api.service.mathematics.mathematics",
+        "documentation": {}
+    },
+    {
+        "label": "create_custom_qr",
+        "kind": 2,
+        "importPath": "api.service.qrcode.qrcodeGenerator",
+        "description": "api.service.qrcode.qrcodeGenerator",
+        "peekOfCode": "def create_custom_qr(data, color=\"black\", background=\"white\", logo_path=None, size=10):\n    # Créer le QR code\n    qr = qrcode.QRCode(\n        version=None,\n        error_correction=qrcode.constants.ERROR_CORRECT_H,\n        box_size=size,\n        border=4,\n    )\n    qr.add_data(data)\n    qr.make(fit=True)",
+        "detail": "api.service.qrcode.qrcodeGenerator",
+        "documentation": {}
+    },
+    {
+        "label": "img",
+        "kind": 5,
+        "importPath": "api.service.qrcode.qrcodeGenerator",
+        "description": "api.service.qrcode.qrcodeGenerator",
+        "peekOfCode": "img = create_custom_qr(\n    \"https://theovesque.fr/\", \n    color=\"black\", \n    background=\"white\", \n    logo_path=r\"C:\\Users\\theov\\Documents\\GitHub\\my-toolbox\\api\\service\\qrcode\\logo.png\"\n)\nimg.save(\"custom_qr.png\")",
+        "detail": "api.service.qrcode.qrcodeGenerator",
         "documentation": {}
     },
     {
