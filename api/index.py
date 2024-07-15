@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .controller.unitConverter.converterController import ConverterController
-from .controller.test import TestController
+from .controller.mathematics.mathematicsController import MathematicsController 
 
 app = FastAPI()
 
@@ -22,5 +22,5 @@ app.add_middleware(
     allow_headers=["*"],  # Autoriser tous les headers
 )
 
-app.include_router(TestController.testRouter)
 app.include_router(ConverterController.converter_router)
+app.include_router(MathematicsController.mathematics_router)

@@ -16,6 +16,14 @@
         "documentation": {}
     },
     {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
         "label": "APIRouter",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -48,6 +56,38 @@
         "documentation": {}
     },
     {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "math",
         "kind": 6,
         "isExtraImport": true,
@@ -74,6 +114,24 @@
         "documentation": {}
     },
     {
+        "label": "MathematicsController",
+        "kind": 6,
+        "importPath": "api.controller.mathematics.mathematicsController",
+        "description": "api.controller.mathematics.mathematicsController",
+        "peekOfCode": "class MathematicsController:\n    mathematics_router = APIRouter(prefix=\"/api/mathematics\")\n    @mathematics_router.post(\"/percent\")\n    async def calculate_percent(request: PercentRequest):\n        \"\"\"\n        Calculate the percentage of a given value.\n        :param request: PercentRequest containing value and percent.\n        :return: Calculated percentage.\n        \"\"\"\n        calculate_percent = MathematicsTools.calc_percent(request.value, request.percent)",
+        "detail": "api.controller.mathematics.mathematicsController",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "api.controller.mathematics.mathematicsController",
+        "description": "api.controller.mathematics.mathematicsController",
+        "peekOfCode": "app = FastAPI()\nclass MathematicsController:\n    mathematics_router = APIRouter(prefix=\"/api/mathematics\")\n    @mathematics_router.post(\"/percent\")\n    async def calculate_percent(request: PercentRequest):\n        \"\"\"\n        Calculate the percentage of a given value.\n        :param request: PercentRequest containing value and percent.\n        :return: Calculated percentage.\n        \"\"\"",
+        "detail": "api.controller.mathematics.mathematicsController",
+        "documentation": {}
+    },
+    {
         "label": "ConverterController",
         "kind": 6,
         "importPath": "api.controller.unitConverter.converterController",
@@ -92,48 +150,129 @@
         "documentation": {}
     },
     {
-        "label": "TestController",
+        "label": "PercentRequest",
         "kind": 6,
-        "importPath": "api.controller.test",
-        "description": "api.controller.test",
-        "peekOfCode": "class TestController:\n    testRouter  = APIRouter()\n    @testRouter.get(\"/api/python\")\n    def hello_world():\n        return {\"message\": \"Hello World\"}",
-        "detail": "api.controller.test",
+        "importPath": "api.model.requestModel.mathematicsRequest",
+        "description": "api.model.requestModel.mathematicsRequest",
+        "peekOfCode": "class PercentRequest(BaseModel):\n    value: Union[float, int]\n    percent: Union[float, int]\nclass SumRequest(BaseModel):\n    value: List[Union[float, int]]\nclass AverageRequest(BaseModel):\n    value: List[Union[float, int]]\nclass MedianRequest(BaseModel):\n    value: List[Union[float, int]]\nclass StandardDeviationRequest(BaseModel):",
+        "detail": "api.model.requestModel.mathematicsRequest",
+        "documentation": {}
+    },
+    {
+        "label": "SumRequest",
+        "kind": 6,
+        "importPath": "api.model.requestModel.mathematicsRequest",
+        "description": "api.model.requestModel.mathematicsRequest",
+        "peekOfCode": "class SumRequest(BaseModel):\n    value: List[Union[float, int]]\nclass AverageRequest(BaseModel):\n    value: List[Union[float, int]]\nclass MedianRequest(BaseModel):\n    value: List[Union[float, int]]\nclass StandardDeviationRequest(BaseModel):\n    value: List[Union[float, int]]\nclass MaximumInListRequest(BaseModel):\n    value: List[Union[float, int]]",
+        "detail": "api.model.requestModel.mathematicsRequest",
+        "documentation": {}
+    },
+    {
+        "label": "AverageRequest",
+        "kind": 6,
+        "importPath": "api.model.requestModel.mathematicsRequest",
+        "description": "api.model.requestModel.mathematicsRequest",
+        "peekOfCode": "class AverageRequest(BaseModel):\n    value: List[Union[float, int]]\nclass MedianRequest(BaseModel):\n    value: List[Union[float, int]]\nclass StandardDeviationRequest(BaseModel):\n    value: List[Union[float, int]]\nclass MaximumInListRequest(BaseModel):\n    value: List[Union[float, int]]\nclass MinimumInListRequest(BaseModel):\n    value: List[Union[float, int]]",
+        "detail": "api.model.requestModel.mathematicsRequest",
+        "documentation": {}
+    },
+    {
+        "label": "MedianRequest",
+        "kind": 6,
+        "importPath": "api.model.requestModel.mathematicsRequest",
+        "description": "api.model.requestModel.mathematicsRequest",
+        "peekOfCode": "class MedianRequest(BaseModel):\n    value: List[Union[float, int]]\nclass StandardDeviationRequest(BaseModel):\n    value: List[Union[float, int]]\nclass MaximumInListRequest(BaseModel):\n    value: List[Union[float, int]]\nclass MinimumInListRequest(BaseModel):\n    value: List[Union[float, int]]\nclass PowerRequest(BaseModel):\n    base: Union[float, int]",
+        "detail": "api.model.requestModel.mathematicsRequest",
+        "documentation": {}
+    },
+    {
+        "label": "StandardDeviationRequest",
+        "kind": 6,
+        "importPath": "api.model.requestModel.mathematicsRequest",
+        "description": "api.model.requestModel.mathematicsRequest",
+        "peekOfCode": "class StandardDeviationRequest(BaseModel):\n    value: List[Union[float, int]]\nclass MaximumInListRequest(BaseModel):\n    value: List[Union[float, int]]\nclass MinimumInListRequest(BaseModel):\n    value: List[Union[float, int]]\nclass PowerRequest(BaseModel):\n    base: Union[float, int]\n    power: int\nclass FactorialRequest(BaseModel):",
+        "detail": "api.model.requestModel.mathematicsRequest",
+        "documentation": {}
+    },
+    {
+        "label": "MaximumInListRequest",
+        "kind": 6,
+        "importPath": "api.model.requestModel.mathematicsRequest",
+        "description": "api.model.requestModel.mathematicsRequest",
+        "peekOfCode": "class MaximumInListRequest(BaseModel):\n    value: List[Union[float, int]]\nclass MinimumInListRequest(BaseModel):\n    value: List[Union[float, int]]\nclass PowerRequest(BaseModel):\n    base: Union[float, int]\n    power: int\nclass FactorialRequest(BaseModel):\n    n: Union[float, int]\nclass ExponentialRequest(BaseModel):",
+        "detail": "api.model.requestModel.mathematicsRequest",
+        "documentation": {}
+    },
+    {
+        "label": "MinimumInListRequest",
+        "kind": 6,
+        "importPath": "api.model.requestModel.mathematicsRequest",
+        "description": "api.model.requestModel.mathematicsRequest",
+        "peekOfCode": "class MinimumInListRequest(BaseModel):\n    value: List[Union[float, int]]\nclass PowerRequest(BaseModel):\n    base: Union[float, int]\n    power: int\nclass FactorialRequest(BaseModel):\n    n: Union[float, int]\nclass ExponentialRequest(BaseModel):\n    x: Union[float, int]",
+        "detail": "api.model.requestModel.mathematicsRequest",
+        "documentation": {}
+    },
+    {
+        "label": "PowerRequest",
+        "kind": 6,
+        "importPath": "api.model.requestModel.mathematicsRequest",
+        "description": "api.model.requestModel.mathematicsRequest",
+        "peekOfCode": "class PowerRequest(BaseModel):\n    base: Union[float, int]\n    power: int\nclass FactorialRequest(BaseModel):\n    n: Union[float, int]\nclass ExponentialRequest(BaseModel):\n    x: Union[float, int]",
+        "detail": "api.model.requestModel.mathematicsRequest",
+        "documentation": {}
+    },
+    {
+        "label": "FactorialRequest",
+        "kind": 6,
+        "importPath": "api.model.requestModel.mathematicsRequest",
+        "description": "api.model.requestModel.mathematicsRequest",
+        "peekOfCode": "class FactorialRequest(BaseModel):\n    n: Union[float, int]\nclass ExponentialRequest(BaseModel):\n    x: Union[float, int]",
+        "detail": "api.model.requestModel.mathematicsRequest",
+        "documentation": {}
+    },
+    {
+        "label": "ExponentialRequest",
+        "kind": 6,
+        "importPath": "api.model.requestModel.mathematicsRequest",
+        "description": "api.model.requestModel.mathematicsRequest",
+        "peekOfCode": "class ExponentialRequest(BaseModel):\n    x: Union[float, int]",
+        "detail": "api.model.requestModel.mathematicsRequest",
         "documentation": {}
     },
     {
         "label": "LengthConversionRequest",
         "kind": 6,
-        "importPath": "api.model.unitConverter.unitConverterRequest",
-        "description": "api.model.unitConverter.unitConverterRequest",
+        "importPath": "api.model.requestModel.unitConverterRequest",
+        "description": "api.model.requestModel.unitConverterRequest",
         "peekOfCode": "class LengthConversionRequest(BaseModel):\n    value: float\n    from_unit: str\n    to_unit: str \nclass TimeConverterRequest(BaseModel):\n    value: float\n    from_unit: str\n    to_unit: str \nclass MassConverterRequest(BaseModel): \n    value: float",
-        "detail": "api.model.unitConverter.unitConverterRequest",
+        "detail": "api.model.requestModel.unitConverterRequest",
         "documentation": {}
     },
     {
         "label": "TimeConverterRequest",
         "kind": 6,
-        "importPath": "api.model.unitConverter.unitConverterRequest",
-        "description": "api.model.unitConverter.unitConverterRequest",
+        "importPath": "api.model.requestModel.unitConverterRequest",
+        "description": "api.model.requestModel.unitConverterRequest",
         "peekOfCode": "class TimeConverterRequest(BaseModel):\n    value: float\n    from_unit: str\n    to_unit: str \nclass MassConverterRequest(BaseModel): \n    value: float\n    from_unit: str\n    to_unit: str  \nclass SpeedConverterRequest(BaseModel):\n    value: float",
-        "detail": "api.model.unitConverter.unitConverterRequest",
+        "detail": "api.model.requestModel.unitConverterRequest",
         "documentation": {}
     },
     {
         "label": "MassConverterRequest",
         "kind": 6,
-        "importPath": "api.model.unitConverter.unitConverterRequest",
-        "description": "api.model.unitConverter.unitConverterRequest",
+        "importPath": "api.model.requestModel.unitConverterRequest",
+        "description": "api.model.requestModel.unitConverterRequest",
         "peekOfCode": "class MassConverterRequest(BaseModel): \n    value: float\n    from_unit: str\n    to_unit: str  \nclass SpeedConverterRequest(BaseModel):\n    value: float\n    from_unit: str\n    to_unit: str",
-        "detail": "api.model.unitConverter.unitConverterRequest",
+        "detail": "api.model.requestModel.unitConverterRequest",
         "documentation": {}
     },
     {
         "label": "SpeedConverterRequest",
         "kind": 6,
-        "importPath": "api.model.unitConverter.unitConverterRequest",
-        "description": "api.model.unitConverter.unitConverterRequest",
+        "importPath": "api.model.requestModel.unitConverterRequest",
+        "description": "api.model.requestModel.unitConverterRequest",
         "peekOfCode": "class SpeedConverterRequest(BaseModel):\n    value: float\n    from_unit: str\n    to_unit: str",
-        "detail": "api.model.unitConverter.unitConverterRequest",
+        "detail": "api.model.requestModel.unitConverterRequest",
         "documentation": {}
     },
     {
