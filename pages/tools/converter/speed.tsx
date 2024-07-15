@@ -1,21 +1,24 @@
 import React, { useState } from "react";
 import axios from "axios";
-import config from "../../../../config";
+import config from "../../../config";
 
-const TimeConverterForm = () => {
+const SpeedConverterForm = () => {
   const [value, setValue] = useState("");
-  const [fromUnit, setFromUnit] = useState("second");
-  const [toUnit, setToUnit] = useState("minute");
+  const [fromUnit, setFromUnit] = useState("m/s");
+  const [toUnit, setToUnit] = useState("km/h");
   const [result, setResult] = useState(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${config.apiUrl}/api/converter/time`, {
-        value: parseFloat(value),
-        from_unit: fromUnit,
-        to_unit: toUnit,
-      });
+      const response = await axios.post(
+        `${config.apiUrl}/api/converter/speed`,
+        {
+          value: parseFloat(value),
+          from_unit: fromUnit,
+          to_unit: toUnit,
+        }
+      );
       setResult(response.data.converted_value);
     } catch (error) {
       console.error("There was an error!", error);
@@ -39,25 +42,19 @@ const TimeConverterForm = () => {
             value={fromUnit}
             onChange={(e) => setFromUnit(e.target.value)}
           >
-            <option value="second">Seconds</option>
-            <option value="minute">Minutes</option>
-            <option value="hour">Hours</option>
-            <option value="day">Days</option>
-            <option value="week">Weeks</option>
-            <option value="month">Months</option>
-            <option value="year">Years</option>
+            <option value="m/s">m/s</option>
+            <option value="km/h">km/h</option>
+            <option value="mph">mph</option>
+            <option value="knot">knot</option>
           </select>
         </div>
         <div>
           <label>To Unit:</label>
           <select value={toUnit} onChange={(e) => setToUnit(e.target.value)}>
-            <option value="second">Seconds</option>
-            <option value="minute">Minutes</option>
-            <option value="hour">Hours</option>
-            <option value="day">Days</option>
-            <option value="week">Weeks</option>
-            <option value="month">Months</option>
-            <option value="year">Years</option>
+            <option value="m/s">m/s</option>
+            <option value="km/h">km/h</option>
+            <option value="mph">mph</option>
+            <option value="knot">knot</option>
           </select>
         </div>
         <button type="submit">Convert</button>
@@ -71,4 +68,4 @@ const TimeConverterForm = () => {
   );
 };
 
-export default TimeConverterForm;
+export default SpeedConverterForm;

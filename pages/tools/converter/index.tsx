@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import LengthConverterForm from "./length/index";
-import TimeConverterForm from "./time/index";
-import MassConverterForm from "./mass/index";
-import SpeedConverterForm from "./speed/index";
+import LengthConverterForm from "./length";
+import TimeConverterForm from "./time";
+import MassConverterForm from "./mass";
+import SpeedConverterForm from "./speed";
 
 const ConverterApp = () => {
   const [selectedConverter, setSelectedConverter] = useState("");
