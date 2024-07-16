@@ -32,14 +32,6 @@
         "documentation": {}
     },
     {
-        "label": "FastAPI",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
         "label": "HTTPException",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -56,6 +48,14 @@
         "documentation": {}
     },
     {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
         "label": "FastAPI",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -93,6 +93,14 @@
         "description": "pydantic",
         "isExtraImport": true,
         "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "StreamingResponse",
+        "importPath": "fastapi.responses",
+        "description": "fastapi.responses",
+        "isExtraImport": true,
+        "detail": "fastapi.responses",
         "documentation": {}
     },
     {
@@ -225,7 +233,7 @@
         "kind": 6,
         "importPath": "api.controller.tools.unitConverter.converterController",
         "description": "api.controller.tools.unitConverter.converterController",
-        "peekOfCode": "class ConverterController:\n    converter_router = APIRouter(prefix=\"/api/converter\")\n    @converter_router.post(\"/length\")\n    async def convert_length(request: LengthConversionRequest):\n        \"\"\"\n        Convert length from one unit to another.\n        :param request: LengthConversionRequest containing value, from_unit, and to_unit.\n        :return: Converted value.\n        \"\"\"\n        converted_value = LengthConverter.convert(",
+        "peekOfCode": "class ConverterController:\n    converter_router = APIRouter(prefix=\"/api/converter\")\n    @converter_router.post(\"/generate\")\n    async def generate_qrcode(request: QRCodeRequest):\n        try:\n            qr_image = Qrcode.create_custom_qr(\n                data=request.data,\n                color=request.color,\n                background=request.background,\n                logo_path=request.logo_path,",
         "detail": "api.controller.tools.unitConverter.converterController",
         "documentation": {}
     },
@@ -234,25 +242,16 @@
         "kind": 5,
         "importPath": "api.controller.tools.unitConverter.converterController",
         "description": "api.controller.tools.unitConverter.converterController",
-        "peekOfCode": "app = FastAPI()\nclass ConverterController:\n    converter_router = APIRouter(prefix=\"/api/converter\")\n    @converter_router.post(\"/length\")\n    async def convert_length(request: LengthConversionRequest):\n        \"\"\"\n        Convert length from one unit to another.\n        :param request: LengthConversionRequest containing value, from_unit, and to_unit.\n        :return: Converted value.\n        \"\"\"",
+        "peekOfCode": "app = FastAPI()\nclass ConverterController:\n    converter_router = APIRouter(prefix=\"/api/converter\")\n    @converter_router.post(\"/generate\")\n    async def generate_qrcode(request: QRCodeRequest):\n        try:\n            qr_image = Qrcode.create_custom_qr(\n                data=request.data,\n                color=request.color,\n                background=request.background,",
         "detail": "api.controller.tools.unitConverter.converterController",
         "documentation": {}
     },
     {
-        "label": "QrCodeController",
-        "kind": 6,
-        "importPath": "api.controller.tools.qrCodeGenerator",
-        "description": "api.controller.tools.qrCodeGenerator",
-        "peekOfCode": "class QrCodeController:\n    qr_code_router = APIRouter(prefix=\"/api/qrcode\")\n    @qr_code_router.post(\"/generate\")\n    async def generate_qrcode(request: QRCodeRequest):\n        try:\n            qr_image = Qrcode.create_custom_qr(\n                data=request.data,\n                color=request.color,\n                background=request.background,\n                logo_path=request.logo_path,",
-        "detail": "api.controller.tools.qrCodeGenerator",
-        "documentation": {}
-    },
-    {
-        "label": "app",
+        "label": "qr_code_router",
         "kind": 5,
         "importPath": "api.controller.tools.qrCodeGenerator",
         "description": "api.controller.tools.qrCodeGenerator",
-        "peekOfCode": "app = FastAPI()\nclass QrCodeController:\n    qr_code_router = APIRouter(prefix=\"/api/qrcode\")\n    @qr_code_router.post(\"/generate\")\n    async def generate_qrcode(request: QRCodeRequest):\n        try:\n            qr_image = Qrcode.create_custom_qr(\n                data=request.data,\n                color=request.color,\n                background=request.background,",
+        "peekOfCode": "qr_code_router = APIRouter(prefix=\"/api/qrcode\")\n@qr_code_router.post(\"/generate\")\nasync def generate_qrcode(request: QRCodeRequest):\n    try:\n        qr_image = Qrcode.create_custom_qr(\n            data=request.data,\n            color=request.color,\n            background=request.background,\n            logo_path=request.logo_path,\n            size=request.size,",
         "detail": "api.controller.tools.qrCodeGenerator",
         "documentation": {}
     },
@@ -468,7 +467,7 @@
         "kind": 5,
         "importPath": "api.index",
         "description": "api.index",
-        "peekOfCode": "origins = [\n    \"http://localhost:3000\",\n    \"http://127.0.0.1:3000\",\n    \"https://my-toolbox.vercel.app\",\n    \"http://my-toolbox.vercel.app\",\n    \"*\"\n]\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=origins,  # Autoriser ces origines",
+        "peekOfCode": "origins = [\n    \"http://localhost:3000\",\n    \"http://127.0.0.1:3000\",\n    \"https://my-toolbox.vercel.app\",\n    \"http://my-toolbox.vercel.app\",\n    \"*\"\n]\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=origins,",
         "detail": "api.index",
         "documentation": {}
     }
