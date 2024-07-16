@@ -40,11 +40,27 @@
         "documentation": {}
     },
     {
-        "label": "BaseModel",
-        "importPath": "pydantic",
-        "description": "pydantic",
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
         "isExtraImport": true,
-        "detail": "pydantic",
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
         "documentation": {}
     },
     {
@@ -69,6 +85,38 @@
         "description": "pydantic",
         "isExtraImport": true,
         "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "StreamingResponse",
+        "importPath": "fastapi.responses",
+        "description": "fastapi.responses",
+        "isExtraImport": true,
+        "detail": "fastapi.responses",
+        "documentation": {}
+    },
+    {
+        "label": "BytesIO",
+        "importPath": "io",
+        "description": "io",
+        "isExtraImport": true,
+        "detail": "io",
         "documentation": {}
     },
     {
@@ -81,6 +129,14 @@
     },
     {
         "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -131,6 +187,14 @@
         "documentation": {}
     },
     {
+        "label": "ImageFont",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
         "label": "CORSMiddleware",
         "importPath": "fastapi.middleware.cors",
         "description": "fastapi.middleware.cors",
@@ -141,37 +205,55 @@
     {
         "label": "MathematicsController",
         "kind": 6,
-        "importPath": "api.controller.mathematics.mathematicsController",
-        "description": "api.controller.mathematics.mathematicsController",
+        "importPath": "api.controller.tools.mathematics.mathematicsController",
+        "description": "api.controller.tools.mathematics.mathematicsController",
         "peekOfCode": "class MathematicsController:\n    mathematics_router = APIRouter(prefix=\"/api/mathematics\")\n    @mathematics_router.post(\"/percent\")\n    async def calculate_percent(request: PercentRequest):\n        \"\"\"\n        Calculate the percentage of a given value.\n        :param request: PercentRequest containing value and percent.\n        :return: Calculated percentage.\n        \"\"\"\n        calculate_percent = MathematicsTools.calc_percent(request.value, request.percent)",
-        "detail": "api.controller.mathematics.mathematicsController",
+        "detail": "api.controller.tools.mathematics.mathematicsController",
         "documentation": {}
     },
     {
         "label": "app",
         "kind": 5,
-        "importPath": "api.controller.mathematics.mathematicsController",
-        "description": "api.controller.mathematics.mathematicsController",
+        "importPath": "api.controller.tools.mathematics.mathematicsController",
+        "description": "api.controller.tools.mathematics.mathematicsController",
         "peekOfCode": "app = FastAPI()\nclass MathematicsController:\n    mathematics_router = APIRouter(prefix=\"/api/mathematics\")\n    @mathematics_router.post(\"/percent\")\n    async def calculate_percent(request: PercentRequest):\n        \"\"\"\n        Calculate the percentage of a given value.\n        :param request: PercentRequest containing value and percent.\n        :return: Calculated percentage.\n        \"\"\"",
-        "detail": "api.controller.mathematics.mathematicsController",
+        "detail": "api.controller.tools.mathematics.mathematicsController",
         "documentation": {}
     },
     {
         "label": "ConverterController",
         "kind": 6,
-        "importPath": "api.controller.unitConverter.converterController",
-        "description": "api.controller.unitConverter.converterController",
+        "importPath": "api.controller.tools.unitConverter.converterController",
+        "description": "api.controller.tools.unitConverter.converterController",
         "peekOfCode": "class ConverterController:\n    converter_router = APIRouter(prefix=\"/api/converter\")\n    @converter_router.post(\"/length\")\n    async def convert_length(request: LengthConversionRequest):\n        \"\"\"\n        Convert length from one unit to another.\n        :param request: LengthConversionRequest containing value, from_unit, and to_unit.\n        :return: Converted value.\n        \"\"\"\n        converted_value = LengthConverter.convert(",
-        "detail": "api.controller.unitConverter.converterController",
+        "detail": "api.controller.tools.unitConverter.converterController",
         "documentation": {}
     },
     {
         "label": "app",
         "kind": 5,
-        "importPath": "api.controller.unitConverter.converterController",
-        "description": "api.controller.unitConverter.converterController",
+        "importPath": "api.controller.tools.unitConverter.converterController",
+        "description": "api.controller.tools.unitConverter.converterController",
         "peekOfCode": "app = FastAPI()\nclass ConverterController:\n    converter_router = APIRouter(prefix=\"/api/converter\")\n    @converter_router.post(\"/length\")\n    async def convert_length(request: LengthConversionRequest):\n        \"\"\"\n        Convert length from one unit to another.\n        :param request: LengthConversionRequest containing value, from_unit, and to_unit.\n        :return: Converted value.\n        \"\"\"",
-        "detail": "api.controller.unitConverter.converterController",
+        "detail": "api.controller.tools.unitConverter.converterController",
+        "documentation": {}
+    },
+    {
+        "label": "QrCodeController",
+        "kind": 6,
+        "importPath": "api.controller.tools.qrCodeGenerator",
+        "description": "api.controller.tools.qrCodeGenerator",
+        "peekOfCode": "class QrCodeController:\n    qrCode_router = APIRouter(prefix=\"/api/qrCode\")\n    @qrCode_router.post(\"/generate\")\n    async def generate_qrcode(request: QrcodeRequest):\n        try:\n            qr_image = Qrcode.create_custom_qr(\n                data=request.data,\n                color=request.color,\n                background=request.background,\n                logo_path=request.logo_path,",
+        "detail": "api.controller.tools.qrCodeGenerator",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "api.controller.tools.qrCodeGenerator",
+        "description": "api.controller.tools.qrCodeGenerator",
+        "peekOfCode": "app = FastAPI()\nclass QrCodeController:\n    qrCode_router = APIRouter(prefix=\"/api/qrCode\")\n    @qrCode_router.post(\"/generate\")\n    async def generate_qrcode(request: QrcodeRequest):\n        try:\n            qr_image = Qrcode.create_custom_qr(\n                data=request.data,\n                color=request.color,\n                background=request.background,",
+        "detail": "api.controller.tools.qrCodeGenerator",
         "documentation": {}
     },
     {
@@ -265,6 +347,15 @@
         "documentation": {}
     },
     {
+        "label": "QRCodeRequest",
+        "kind": 6,
+        "importPath": "api.model.requestModel.qrCodeRequest",
+        "description": "api.model.requestModel.qrCodeRequest",
+        "peekOfCode": "class QRCodeRequest(BaseModel):\n    data: str\n    color: str = \"black\"\n    background: str = \"white\"\n    logo_path: Optional[str] = None\n    size: int = 10\n    logo_position: str = \"center\"\n    banner_text: Optional[str] = None\n    banner_position: str = \"bottom\"\n    banner_background: str = \"white\"",
+        "detail": "api.model.requestModel.qrCodeRequest",
+        "documentation": {}
+    },
+    {
         "label": "LengthConversionRequest",
         "kind": 6,
         "importPath": "api.model.requestModel.unitConverterRequest",
@@ -310,20 +401,11 @@
         "documentation": {}
     },
     {
-        "label": "create_custom_qr",
-        "kind": 2,
+        "label": "Qrcode",
+        "kind": 6,
         "importPath": "api.service.qrcode.qrcodeGenerator",
         "description": "api.service.qrcode.qrcodeGenerator",
-        "peekOfCode": "def create_custom_qr(data, color=\"black\", background=\"white\", logo_path=None, size=10):\n    # Créer le QR code\n    qr = qrcode.QRCode(\n        version=None,\n        error_correction=qrcode.constants.ERROR_CORRECT_H,\n        box_size=size,\n        border=4,\n    )\n    qr.add_data(data)\n    qr.make(fit=True)",
-        "detail": "api.service.qrcode.qrcodeGenerator",
-        "documentation": {}
-    },
-    {
-        "label": "img",
-        "kind": 5,
-        "importPath": "api.service.qrcode.qrcodeGenerator",
-        "description": "api.service.qrcode.qrcodeGenerator",
-        "peekOfCode": "img = create_custom_qr(\n    \"https://theovesque.fr/\", \n    color=\"black\", \n    background=\"white\", \n    logo_path=r\"C:\\Users\\theov\\Documents\\GitHub\\my-toolbox\\api\\service\\qrcode\\logo.png\"\n)\nimg.save(\"custom_qr.png\")",
+        "peekOfCode": "class Qrcode:\n    def create_custom_qr(data, color=\"black\", background=\"white\", logo_path=None, size=10, logo_position=\"center\", \n                        banner_text=None, banner_position=\"bottom\", banner_background=\"white\", banner_text_color=\"black\"):\n        # Create QR code \n        qr = qrcode.QRCode(\n            version=None,\n            error_correction=qrcode.constants.ERROR_CORRECT_H,\n            box_size=size,\n            border=4,\n        )",
         "detail": "api.service.qrcode.qrcodeGenerator",
         "documentation": {}
     },

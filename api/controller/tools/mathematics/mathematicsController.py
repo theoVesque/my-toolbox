@@ -1,7 +1,7 @@
 from fastapi import FastAPI, APIRouter
 from pydantic import BaseModel
-from ...service.mathematics.mathematics import MathematicsTools
-from ...model.requestModel.mathematicsRequest import PercentRequest, SumRequest, AverageRequest, MedianRequest, StandardDeviationRequest, MaximumInListRequest, MinimumInListRequest, PowerRequest, FactorialRequest, ExponentialRequest
+from ....service.mathematics.mathematics import MathematicsTools
+from ....model.requestModel.mathematicsRequest import PercentRequest, SumRequest, AverageRequest, MedianRequest, StandardDeviationRequest, MaximumInListRequest, MinimumInListRequest, PowerRequest, FactorialRequest, ExponentialRequest
 
 app = FastAPI()
 

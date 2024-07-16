@@ -1,7 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .controller.unitConverter.converterController import ConverterController
-from .controller.mathematics.mathematicsController import MathematicsController 
+from .controller.tools.unitConverter.converterController import ConverterController
+from .controller.tools.mathematics.mathematicsController import MathematicsController 
+from .controller.tools.qrCodeGenerator import QrCodeController
 
 app = FastAPI()
 

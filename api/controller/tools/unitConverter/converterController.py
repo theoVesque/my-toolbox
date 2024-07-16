@@ -1,7 +1,7 @@
 from fastapi import FastAPI, APIRouter
 from pydantic import BaseModel
-from ...service.unitConverter.converter import LengthConverter, TimeConverter, MassConverter, SpeedConverter
-from ...model.requestModel.unitConverterRequest import LengthConversionRequest, TimeConverterRequest, MassConverterRequest, SpeedConverterRequest
+from ....service.unitConverter.converter import LengthConverter, TimeConverter, MassConverter, SpeedConverter
+from ....model.requestModel.unitConverterRequest import LengthConversionRequest, TimeConverterRequest, MassConverterRequest, SpeedConverterRequest
 
 app = FastAPI()
 
