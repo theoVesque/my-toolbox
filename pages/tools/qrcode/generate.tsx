@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 import axios from "axios";
+import config from "../../../config";
 
 const GenerateQRCode = () => {
   const [data, setData] = useState<string>("");
@@ -14,9 +15,8 @@ const GenerateQRCode = () => {
   const [bannerTextColor, setBannerTextColor] = useState<string>("black");
   const [qrCode, setQrCode] = useState<string | null>(null);
 
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
-
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
     const requestData = {
       data,
       color,
@@ -31,9 +31,13 @@ const GenerateQRCode = () => {
     };
 
     try {
-      const response = await axios.post("/api/qrCode/generate", requestData, {
-        responseType: "blob", // Important pour recevoir l'image en tant que blob
-      });
+      const response = await axios.post(
+        `${config.apiUrl}/api/qrcode/generate`,
+        requestData,
+        {
+          responseType: "blob", // Important pour recevoir l'image en tant que blob
+        }
+      );
       const qrCodeUrl = URL.createObjectURL(response.data);
       setQrCode(qrCodeUrl);
     } catch (error) {
@@ -50,8 +54,9 @@ const GenerateQRCode = () => {
           <input
             type="text"
             value={data}
-            onChange={(e) => setData(e.target.value)}
-            required
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setData(e.target.value)
+            }
           />
         </div>
         <div>
@@ -59,8 +64,9 @@ const GenerateQRCode = () => {
           <input
             type="text"
             value={color}
-            onChange={(e) => setColor(e.target.value)}
-            required
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setColor(e.target.value)
+            }
           />
         </div>
         <div>
@@ -68,8 +74,9 @@ const GenerateQRCode = () => {
           <input
             type="text"
             value={background}
-            onChange={(e) => setBackground(e.target.value)}
-            required
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setBackground(e.target.value)
+            }
           />
         </div>
         <div>
@@ -77,15 +84,18 @@ const GenerateQRCode = () => {
           <input
             type="text"
             value={logoPath}
-            onChange={(e) => setLogoPath(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setLogoPath(e.target.value)
+            }
           />
         </div>
         <div>
           <label>Size: </label>
           <select
             value={size}
-            onChange={(e) => setSize(e.target.value)}
-            required
+            onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+              setSize(e.target.value)
+            }
           >
             <option value="XS">XS</option>
             <option value="S">S</option>
@@ -98,8 +108,9 @@ const GenerateQRCode = () => {
           <label>Logo Position: </label>
           <select
             value={logoPosition}
-            onChange={(e) => setLogoPosition(e.target.value)}
-            required
+            onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+              setLogoPosition(e.target.value)
+            }
           >
             <option value="center">Center</option>
             <option value="top">Top</option>
@@ -113,15 +124,18 @@ const GenerateQRCode = () => {
           <input
             type="text"
             value={bannerText}
-            onChange={(e) => setBannerText(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setBannerText(e.target.value)
+            }
           />
         </div>
         <div>
           <label>Banner Position: </label>
           <select
             value={bannerPosition}
-            onChange={(e) => setBannerPosition(e.target.value)}
-            required
+            onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+              setBannerPosition(e.target.value)
+            }
           >
             <option value="top">Top</option>
             <option value="bottom">Bottom</option>
@@ -132,8 +146,9 @@ const GenerateQRCode = () => {
           <input
             type="text"
             value={bannerBackground}
-            onChange={(e) => setBannerBackground(e.target.value)}
-            required
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setBannerBackground(e.target.value)
+            }
           />
         </div>
         <div>
@@ -141,8 +156,9 @@ const GenerateQRCode = () => {
           <input
             type="text"
             value={bannerTextColor}
-            onChange={(e) => setBannerTextColor(e.target.value)}
-            required
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setBannerTextColor(e.target.value)
+            }
           />
         </div>
         <button type="submit">Generate QR Code</button>

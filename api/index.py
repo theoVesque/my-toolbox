@@ -25,3 +25,4 @@ app.add_middleware(
 
 app.include_router(ConverterController.converter_router)
 app.include_router(MathematicsController.mathematics_router)
+app.include_router(QrCodeController.qr_code_router) 

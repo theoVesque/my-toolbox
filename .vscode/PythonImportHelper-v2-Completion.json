@@ -96,14 +96,6 @@
         "documentation": {}
     },
     {
-        "label": "BaseModel",
-        "importPath": "pydantic",
-        "description": "pydantic",
-        "isExtraImport": true,
-        "detail": "pydantic",
-        "documentation": {}
-    },
-    {
         "label": "StreamingResponse",
         "importPath": "fastapi.responses",
         "description": "fastapi.responses",
@@ -141,6 +133,14 @@
         "description": "typing",
         "isExtraImport": true,
         "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Enum",
+        "importPath": "enum",
+        "description": "enum",
+        "isExtraImport": true,
+        "detail": "enum",
         "documentation": {}
     },
     {
@@ -243,7 +243,7 @@
         "kind": 6,
         "importPath": "api.controller.tools.qrCodeGenerator",
         "description": "api.controller.tools.qrCodeGenerator",
-        "peekOfCode": "class QrCodeController:\n    qrCode_router = APIRouter(prefix=\"/api/qrCode\")\n    @qrCode_router.post(\"/generate\")\n    async def generate_qrcode(request: QrcodeRequest):\n        try:\n            qr_image = Qrcode.create_custom_qr(\n                data=request.data,\n                color=request.color,\n                background=request.background,\n                logo_path=request.logo_path,",
+        "peekOfCode": "class QrCodeController:\n    qr_code_router = APIRouter(prefix=\"/api/qrcode\")\n    @qr_code_router.post(\"/generate\")\n    async def generate_qrcode(request: QRCodeRequest):\n        try:\n            qr_image = Qrcode.create_custom_qr(\n                data=request.data,\n                color=request.color,\n                background=request.background,\n                logo_path=request.logo_path,",
         "detail": "api.controller.tools.qrCodeGenerator",
         "documentation": {}
     },
@@ -252,7 +252,7 @@
         "kind": 5,
         "importPath": "api.controller.tools.qrCodeGenerator",
         "description": "api.controller.tools.qrCodeGenerator",
-        "peekOfCode": "app = FastAPI()\nclass QrCodeController:\n    qrCode_router = APIRouter(prefix=\"/api/qrCode\")\n    @qrCode_router.post(\"/generate\")\n    async def generate_qrcode(request: QrcodeRequest):\n        try:\n            qr_image = Qrcode.create_custom_qr(\n                data=request.data,\n                color=request.color,\n                background=request.background,",
+        "peekOfCode": "app = FastAPI()\nclass QrCodeController:\n    qr_code_router = APIRouter(prefix=\"/api/qrcode\")\n    @qr_code_router.post(\"/generate\")\n    async def generate_qrcode(request: QRCodeRequest):\n        try:\n            qr_image = Qrcode.create_custom_qr(\n                data=request.data,\n                color=request.color,\n                background=request.background,",
         "detail": "api.controller.tools.qrCodeGenerator",
         "documentation": {}
     },
@@ -347,11 +347,20 @@
         "documentation": {}
     },
     {
+        "label": "QRSize",
+        "kind": 6,
+        "importPath": "api.model.requestModel.qrCodeRequest",
+        "description": "api.model.requestModel.qrCodeRequest",
+        "peekOfCode": "class QRSize(str, Enum):\n    XS = \"XS\"\n    S = \"S\"\n    M = \"M\"\n    L = \"L\"\n    XL = \"XL\"\nclass QRCodeRequest(BaseModel):\n    data: str\n    color: str = \"black\"\n    background: str = \"white\"",
+        "detail": "api.model.requestModel.qrCodeRequest",
+        "documentation": {}
+    },
+    {
         "label": "QRCodeRequest",
         "kind": 6,
         "importPath": "api.model.requestModel.qrCodeRequest",
         "description": "api.model.requestModel.qrCodeRequest",
-        "peekOfCode": "class QRCodeRequest(BaseModel):\n    data: str\n    color: str = \"black\"\n    background: str = \"white\"\n    logo_path: Optional[str] = None\n    size: int = 10\n    logo_position: str = \"center\"\n    banner_text: Optional[str] = None\n    banner_position: str = \"bottom\"\n    banner_background: str = \"white\"",
+        "peekOfCode": "class QRCodeRequest(BaseModel):\n    data: str\n    color: str = \"black\"\n    background: str = \"white\"\n    logo_path: Optional[str] = None\n    size: QRSize = QRSize.M\n    logo_position: str = \"center\"\n    banner_text: Optional[str] = None\n    banner_position: str = \"bottom\"\n    banner_background: str = \"white\"",
         "detail": "api.model.requestModel.qrCodeRequest",
         "documentation": {}
     },
@@ -405,7 +414,7 @@
         "kind": 6,
         "importPath": "api.service.qrcode.qrcodeGenerator",
         "description": "api.service.qrcode.qrcodeGenerator",
-        "peekOfCode": "class Qrcode:\n    def create_custom_qr(data, color=\"black\", background=\"white\", logo_path=None, size=10, logo_position=\"center\", \n                        banner_text=None, banner_position=\"bottom\", banner_background=\"white\", banner_text_color=\"black\"):\n        # Create QR code \n        qr = qrcode.QRCode(\n            version=None,\n            error_correction=qrcode.constants.ERROR_CORRECT_H,\n            box_size=size,\n            border=4,\n        )",
+        "peekOfCode": "class Qrcode:\n    def create_custom_qr(data, color=\"black\", background=\"white\", logo_path=None, size=QRSize.M, logo_position=\"center\", \n                         banner_text=None, banner_position=\"bottom\", banner_background=\"white\", banner_text_color=\"black\"):\n        # Define size mappings\n        size_mappings = {\n            QRSize.XS: 4,\n            QRSize.S: 6,\n            QRSize.M: 8,\n            QRSize.L: 10,\n            QRSize.XL: 12",
         "detail": "api.service.qrcode.qrcodeGenerator",
         "documentation": {}
     },

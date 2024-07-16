@@ -1,19 +1,16 @@
 from fastapi import FastAPI, HTTPException, APIRouter
 from fastapi.responses import StreamingResponse
 from io import BytesIO
-
 from ...service.qrcode.qrcodeGenerator import Qrcode
-from ...model.requestModel.qrCodeRequest import QrcodeRequest
-
+from ...model.requestModel.qrCodeRequest import QRCodeRequest
 
 app = FastAPI()
 
-
 class QrCodeController:
-    qrCode_router = APIRouter(prefix="/api/qrCode")
+    qr_code_router = APIRouter(prefix="/api/qrcode")
     
-    @qrCode_router.post("/generate")
-    async def generate_qrcode(request: QrcodeRequest):
+    @qr_code_router.post("/generate")
+    async def generate_qrcode(request: QRCodeRequest):
         try:
             qr_image = Qrcode.create_custom_qr(
                 data=request.data,

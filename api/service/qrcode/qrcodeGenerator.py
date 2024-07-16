@@ -1,15 +1,29 @@
 import qrcode
 from PIL import Image, ImageDraw, ImageFont
+from ...model.requestModel.qrCodeRequest import QRSize
 
 class Qrcode:
     
-    def create_custom_qr(data, color="black", background="white", logo_path=None, size=10, logo_position="center", 
-                        banner_text=None, banner_position="bottom", banner_background="white", banner_text_color="black"):
+    def create_custom_qr(data, color="black", background="white", logo_path=None, size=QRSize.M, logo_position="center", 
+                         banner_text=None, banner_position="bottom", banner_background="white", banner_text_color="black"):
+        
+        # Define size mappings
+        size_mappings = {
+            QRSize.XS: 4,
+            QRSize.S: 6,
+            QRSize.M: 8,
+            QRSize.L: 10,
+            QRSize.XL: 12
+        }
+        
+        # Get the numeric size
+        numeric_size = size_mappings[size]
+        
         # Create QR code 
         qr = qrcode.QRCode(
             version=None,
             error_correction=qrcode.constants.ERROR_CORRECT_H,
-            box_size=size,
+            box_size=numeric_size,
             border=4,
         )
         qr.add_data(data)
